@@ -11,7 +11,7 @@ This module is connecting two great modules. monk and mongo-mock. mongomock is s
 ## usage:
 ```js
 
-require('./index.js')({filename: __dirname+'/data.js'});
+require('tfilemonk')({filename: __dirname+'/data.js'});
 const monk = require('monk');
 
 
