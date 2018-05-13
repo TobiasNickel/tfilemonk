@@ -4,9 +4,8 @@ const MongoClient = mongodb.MongoClient;
 const STATE = { CLOSED: 'closed', OPENING: 'opening', OPEN: 'open' };
 
 module.exports = function(options){
-    mongodb.max_delay = 0;
-    var MongoClient = mongodb.MongoClient;
-    try { MongoClient.load(options.filename || "data.js"); } catch (e) {/* ignore */ }
+    mongodb.max_delay = parseInt(options.max_delay) || 0;
+    try { MongoClient.load(options.filename || "data.js"); } catch (e) {/* ignore */}
     MongoClient.persist = options.filename || "data.js";
 
     monk.prototype.open = function (uri, opts, fn) {
@@ -22,9 +21,9 @@ module.exports = function(options){
                 ['authenticated', 'close', 'error', 'fullsetup', 'parseError', 'reconnect', 'timeout'].forEach((eventName) => {
                     self._db.on(eventName, function (e) { self.emit(eventName, e) })
                 });
-                this.emit('open', db)
+                this.emit('open', db);
             }
-            if (fn) { fn(err, this) }
+            if (fn) { fn(err, this); }
         }).bind(this))
     };
 

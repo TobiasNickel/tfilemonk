@@ -4,11 +4,11 @@ const monk = require('monk');
 
 
 (async () => {
-    var db = monk('mongodb://localhost:1231/database');
-    var users = db.get('users');
+    const db = monk('mongodb://localhost:1231/database');
+    const users = db.get('users');
     await users.insert({ name: "tobias" });
-    var users = await users.findOne({ name: "tobias" });
+    const tobias = await users.findOne({ name: "tobias" });
     monk.persist();
-    console.log('done')
+    console.log('done');
     process.exit();
 })().catch(err => console.log(err))

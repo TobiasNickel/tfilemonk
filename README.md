@@ -7,27 +7,30 @@ The most imporant phase in each an every project is the start. The start should 
 
 ## this module
 This module is connecting two great modules. monk and mongo-mock. mongomock is simulating an API mostly compatible to the original mongodb, but store data in memory. This data can be persisted to filesystem in a js file.
-
+@id:MS-CEINTL.vscode-language-pack-zh-hans
 ## usage:
 ```js
-
-require('./index.js')({filename: __dirname+'/data.js'});
+require('tfilemonk')({filename: __dirname+'/data.js'});
 const monk = require('monk');
 
-
 (async () => {
-    var db = monk('mongodb://localhost:1231/database');
-    var users = db.get('users');
+    const db = monk('mongodb://localhost:1231/database');
+    const users = db.get('users');
     await users.insert({ name: "tobias" });
-    var users = await users.findOne({ name: "tobias" });
+    const tobias = await users.findOne({ name: "tobias" });
     monk.persist();
     console.log('done');
     process.exit();
 })().catch(err => console.log(err));
-
 ```
 
 ## desclosure
 this module is meant to be used in development, specially when starting a project. you can start using this mongo replacement and later just switch to a real mongo database. Without changing any code, just configure the database and get rid of this module.
 
-I made this module for monk, because I love that module. Is has a very clean API. If you want to use the more popular mongoose, no extra module is needed, you can just intialize it using mongo-mock and call mongo-mocks method **_persist**.
+I made this module for monk, because I love that module. Is has a very clean API. If you want to use the more popular mongoose, no extra module is needed, you can just intialize it using mongo-mock and call mongo-mocks method **_persist**.  
+
+
+## roadmap
+1. It would be good to use different mongo-mock to store in multiple files, but mongo-mock is implemented as a singleton now.
+2. use mongomock for given collections, so you could try a new feature first within a temporary database instat of poluting the shared database.
+
