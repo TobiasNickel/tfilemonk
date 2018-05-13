@@ -29,8 +29,6 @@ this module is meant to be used in development, specially when starting a projec
 
 I made this module for monk, because I love that module. Is has a very clean API. If you want to use the more popular mongoose, no extra module is needed, you can just intialize it using mongo-mock and call mongo-mocks method **_persist**.  
 
-
 ## roadmap
 1. It would be good to use different mongo-mock to store in multiple files, but mongo-mock is implemented as a singleton now.
 2. use mongomock for given collections, so you could try a new feature first within a temporary database instat of poluting the shared database.
-
