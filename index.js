@@ -8,8 +8,7 @@ module.exports = function(options){
     try { MongoClient.load(options.filename || "data.js"); } catch (e) {/* ignore */}
     MongoClient.persist = options.filename || "data.js";
 
-    monk.prototype.open = function (uri, opts, fn) {
-        console.log('before connect', uri)
+    monk.prototype.open = function (uri, opts = {}, fn) {
         MongoClient.connect(uri, opts, ((err, db) => {
             if (err || !db) {
                 this._state = STATE.CLOSED;
@@ -18,9 +17,8 @@ module.exports = function(options){
                 this._state = STATE.OPEN;
                 this._db = db;
                 var self = this;
-                ['authenticated', 'close', 'error', 'fullsetup', 'parseError', 'reconnect', 'timeout'].forEach((eventName) => {
-                    self._db.on(eventName, function (e) { self.emit(eventName, e) })
-                });
+                ['authenticated', 'close', 'error', 'fullsetup', 'parseError', 'reconnect', 'timeout']
+                    .forEach(eventName => self._db.on(eventName,  e => self.emit(eventName, e)));
                 this.emit('open', db);
             }
             if (fn) { fn(err, this); }
