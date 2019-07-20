@@ -1,7 +1,7 @@
 {
     "name": "tfilemonk",
-    "version": "0.0.3",
-    "description": "to rapidly build prototyes that are ready for mongodb",
+    "version": "0.0.4",
+    "description": "to rapidly build prototypes that are ready for mongodb",
     "main": "index.js",
     "scripts": {},
     "repository": {
@@ -21,7 +21,7 @@
     "license": "MIT",
     "dependencies": {
         "mongo-mock": "^3.1.0",
-        "monk": "^6.0.6"
+        "monk": "^7.0.0"
     },
     "homepage": "https://github.com/TobiasNickel/tfilemonk#readme"
 }
