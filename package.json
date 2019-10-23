@@ -1,9 +1,11 @@
 {
     "name": "tfilemonk",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "to rapidly build prototypes that are ready for mongodb",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "test":"node ./test.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/TobiasNickel/tfilemonk.git"
@@ -20,8 +22,8 @@
     "author": "Tobias Nickel",
     "license": "MIT",
     "dependencies": {
-        "mongo-mock": "^3.1.0",
-        "monk": "^7.0.0"
+        "mongo-mock": "^3.8.1",
+        "monk": "^7.1.1"
     },
     "homepage": "https://github.com/TobiasNickel/tfilemonk#readme"
 }
