@@ -6,8 +6,8 @@ const STATE = { CLOSED: 'closed', OPENING: 'opening', OPEN: 'open' };
 
 module.exports = function (options) {
     mongodb.max_delay = parseInt(options.max_delay) || 0;
-    try { MongoClient.load(options.filename || 'data.js'); } catch (e) {/* ignore */ }
     MongoClient.persist = options.filename || 'data.js';
+    try { MongoClient.load(options.filename || 'data.js'); } catch (e) {/* ignore */ }
 
     monk.prototype.open = function (uri, opts = {}, fn) {
         MongoClient.connect(uri, opts, (err, db) => {

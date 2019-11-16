@@ -1,6 +1,6 @@
 {
     "name": "tfilemonk",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "to rapidly build prototypes that are ready for mongodb",
     "main": "index.js",
     "scripts": {
